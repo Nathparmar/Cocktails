@@ -3,6 +3,8 @@ package np.demo.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -11,6 +13,7 @@ public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @Column
@@ -22,17 +25,25 @@ public class Ingredient {
     @Column
     private double alcoholPercentage;
 
-    @ManyToOne
-    @JoinColumn(name = "drink_id")
-    @JsonIgnoreProperties({"ingredients"})
-    private Drink drink;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "drinks_ingredients",
+//            joinColumns = @JoinColumn(name = "ingredient_id"),
+//            inverseJoinColumns = @JoinColumn(name = "estate_id")
+//    )
+//    @JsonIgnoreProperties({"ingredients"})
+//    private List<Drink> drinks;
 
-    public Ingredient( String name, double measurement, double alcoholPercentage, Drink drink) {
+    @ManyToMany(mappedBy = "ingredients")
+    @JsonIgnoreProperties({"ingredients"})
+    private List<Drink> drinks;
+
+    public Ingredient( String name, double measurement, double alcoholPercentage) {
         this.id = id;
         this.name = name;
         this.measurement = measurement;
         this.alcoholPercentage = alcoholPercentage;
-        this.drink = drink;
+        this.drinks = new ArrayList<>();
     }
 
     public Ingredient() {
@@ -70,11 +81,20 @@ public class Ingredient {
         this.alcoholPercentage = alcoholPercentage;
     }
 
-    public Drink getDrink() {
-        return drink;
+    public List<Drink> getDrinks() {
+        return drinks;
     }
 
-    public void setDrink(Drink drink) {
-        this.drink = drink;
+    public void setDrinks(List<Drink> drinks) {
+        this.drinks = drinks;
     }
+
+    public void addDrink(Drink drink){
+        this.drinks.add(drink);
+    }
+
+    public void removeDrink(Drink drink){
+        this.drinks.remove(drink);
+    }
+
 }
