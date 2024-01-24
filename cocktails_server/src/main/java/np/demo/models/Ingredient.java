@@ -43,7 +43,7 @@ public class Ingredient {
         this.name = name;
         this.measurement = measurement;
         this.alcoholPercentage = alcoholPercentage;
-        this.drinks = new ArrayList<>();
+        this.drinks = new ArrayList<Drink>();
     }
 
     public Ingredient() {
@@ -89,12 +89,6 @@ public class Ingredient {
         this.drinks = drinks;
     }
 
-    public void addDrink(Drink drink){
-        this.drinks.add(drink);
-    }
 
-    public void removeDrink(Drink drink){
-        this.drinks.remove(drink);
-    }
 
 }

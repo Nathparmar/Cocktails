@@ -9,6 +9,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+import java.beans.Transient;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -22,7 +25,8 @@ public class DataLoader implements ApplicationRunner {
 
     }
 
-@Override
+    @Override
+    @Transactional
     public void run(ApplicationArguments args) throws Exception {
 
 
@@ -35,16 +39,16 @@ public class DataLoader implements ApplicationRunner {
 
 
         Ingredient vodka = new Ingredient("vodka", 50, 40);
-        vodka.addDrink(vodkaCoke);
-        vodka.addDrink(vodkaDietCoke);
+        vodkaCoke.addIngredient(vodka);
+        vodkaDietCoke.addIngredient(vodka);
         ingredientRepository.save(vodka);
 
         Ingredient coke = new Ingredient("coke", 300, 0);
-        coke.addDrink(vodkaCoke);
+        vodkaCoke.addIngredient(coke);
         ingredientRepository.save(coke);
 
         Ingredient dietCoke = new Ingredient("diet coke", 300, 0);
-        dietCoke.addDrink(vodkaDietCoke);
+        vodkaDietCoke.addIngredient(dietCoke);
         ingredientRepository.save(dietCoke);
 
 
