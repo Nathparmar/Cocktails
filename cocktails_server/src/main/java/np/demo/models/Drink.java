@@ -48,12 +48,12 @@ public class Drink {
     @Column
     private String garnish;
 
-    public Drink(String name, String type, String buildMethod, double totalAlcoholPercentage, String glassType, String garnish) {
+    public Drink(String name, String type, String buildMethod, String glassType, String garnish) {
         this.name = name;
         this.type = type;
         this.ingredients = new ArrayList<Ingredient>();
+        this.totalAlcoholPercentage = 0;
         this.buildMethod = buildMethod;
-        this.totalAlcoholPercentage = totalAlcoholPercentage;
         this.glassType = glassType;
         this.garnish = garnish;
     }

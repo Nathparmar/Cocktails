@@ -1,6 +1,7 @@
 package np.demo.services;
 
 import np.demo.models.Drink;
+import np.demo.models.Ingredient;
 import np.demo.repositories.DrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,4 +25,20 @@ public class DrinkService {
     public Drink findDrink(Long id){
         return drinkRepository.findById(id).get();
     }
+
+    public void calculateTotalAlcoholPercentage(Drink drink){
+        double totalPureAlcohol = 0.0; //in ml
+        double totalVolume = 0.0; //
+
+        for(Ingredient ingredient : drink.getIngredients()){
+            double alcoholContent = ingredient.getMeasurement() * (ingredient.getAlcoholPercentage()/100);
+            totalPureAlcohol += alcoholContent;
+            totalVolume += ingredient.getMeasurement();
+        }
+
+        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
+        drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
+    }
+
+
 }

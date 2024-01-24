@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("drinks")
@@ -26,6 +28,11 @@ public class DrinkController {
     @GetMapping
     public ResponseEntity<List<Drink>> getAllDrinks(){
         return new ResponseEntity<>(drinkRepository.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "{id}")
+    public ResponseEntity<Optional<Drink>> getDrinkById(@PathVariable Long id){
+        return new ResponseEntity<>(drinkRepository.findById(id), HttpStatus.OK);
     }
 
 }
