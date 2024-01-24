@@ -37,8 +37,12 @@ public class DataLoader implements ApplicationRunner {
 
         Drink vodkaCoke = new Drink("Vodka Coke", "spirit mixer", "build in glass", "spirit glass", "lemon slice" );
         drinkRepository.save(vodkaCoke);
+
         Drink vodkaDietCoke = new Drink("Vodka Diet Coke", "spirit mixer", "build in glass",  "spirit glass", "lemon slice" );
         drinkRepository.save(vodkaDietCoke);
+
+         
+
 //        Ingredients
 
         Ingredient vodka = new Ingredient("vodka", 50, 40);

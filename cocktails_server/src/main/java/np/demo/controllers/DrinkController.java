@@ -1,15 +1,14 @@
 package np.demo.controllers;
 
+import np.demo.DTOs.DrinkDTO;
 import np.demo.models.Drink;
+import np.demo.models.Ingredient;
 import np.demo.repositories.DrinkRepository;
 import np.demo.services.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,5 +33,18 @@ public class DrinkController {
     public ResponseEntity<Optional<Drink>> getDrinkById(@PathVariable Long id){
         return new ResponseEntity<>(drinkRepository.findById(id), HttpStatus.OK);
     }
+
+//    @PostMapping
+//    public ResponseEntity<Drink> calculateAlcPercentageOfClientDrink(@RequestBody List<Ingredient> ingredients){
+//        DrinkDTO drinkDTO = new DrinkDTO();
+//        drinkService.calculateTotalAlcoholPercentageDTO(drinkDTO, ingredients);
+//        Drink drink = new Drink(drinkDTO.getName(), drinkDTO.getTotalAlcoholPercentage());
+//        return ResponseEntity.ok(drink);
+//    }
+
+
+
+
+
 
 }
