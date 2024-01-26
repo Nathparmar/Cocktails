@@ -21,8 +21,13 @@ public class Ingredient {
     @Column
     private double measurement;
 
-    @OneToOne
-    private Alcohol alcohol;
+    @ManyToMany
+    @JoinTable(
+            name = "ingredient_alcohol",
+            joinColumns = @JoinColumn(name = "ingredient_id"),
+            inverseJoinColumns = @JoinColumn(name = "alcohol_id")
+    )
+    private List<Alcohol> alcohols;
 
 
 //    @ManyToMany
@@ -42,7 +47,7 @@ public class Ingredient {
         this.id = id;
         this.measurement = measurement;
         this.drinks = new ArrayList<Drink>();
-        this.alcohol = new Alcohol();
+        this.alcohols = new ArrayList<>();
     }
 
     public Ingredient() {
@@ -75,16 +80,16 @@ public class Ingredient {
         this.drinks = drinks;
     }
 
-//    public void addAlcohol(Alcohol alcohol) {
-//        this.alcohols.add(alcohol);
-//    }
-
-
-    public Alcohol getAlcohol() {
-        return alcohol;
+    public void addAlcohol(Alcohol alcohol) {
+        this.alcohols.add(alcohol);
     }
 
-    public void setAlcohol(Alcohol alcohol) {
-        this.alcohol = alcohol;
+
+    public List<Alcohol> getAlcohols() {
+        return alcohols;
+    }
+
+    public void setAlcohols(List<Alcohol> alcohols) {
+        this.alcohols = alcohols;
     }
 }

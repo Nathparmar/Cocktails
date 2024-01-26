@@ -3,6 +3,7 @@ package np.demo.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "alcohols")
@@ -26,15 +27,14 @@ public class Alcohol {
     @Column
     private double alcoholPercentage;
 
-    @OneToOne
-    @JsonIgnoreProperties({"ingredients"})
-    private Ingredient ingredient;
+    @ManyToMany(mappedBy = "alcohols")
+    @JsonIgnoreProperties({"alcohols"})
+    private List<Ingredient> ingredients;
 
-    public Alcohol( String name, String type, String brand, double alcoholPercentage) {
+    public Alcohol( String name, String type, double alcoholPercentage) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.brand = brand;
         this.alcoholPercentage = alcoholPercentage;
     }
 
@@ -65,13 +65,6 @@ public class Alcohol {
         this.type = type;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
 
     public double getAlcoholPercentage() {
         return alcoholPercentage;

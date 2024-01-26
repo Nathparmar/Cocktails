@@ -55,12 +55,20 @@ public class DataLoader implements ApplicationRunner {
         Ingredient doubleMeasure = new Ingredient(50);
         ingredientRepository.save(doubleMeasure);
 
-        Alcohol vodka = new Alcohol("Vodka", "vodka", "Absolut", 40);
+        Ingredient singleMeasure = new Ingredient(25);
+        ingredientRepository.save(singleMeasure);
+
+        Alcohol vodka = new Alcohol(" Absolut Vodka", "vodka", 40);
         alcoholRepository.save(vodka);
-        doubleMeasure.setAlcohol(vodka);
+        doubleMeasure.addAlcohol(vodka);
+
+        Alcohol gin = new Alcohol("Edingurgh Gin", "gin", 40);
+        alcoholRepository.save(gin);
+        doubleMeasure.addAlcohol(gin);
 
         // Add ingredients to drinks
         vodkaCoke.addIngredient(doubleMeasure);
+        vodkaCoke.addIngredient(singleMeasure);
         vodkaDietCoke.addIngredient(doubleMeasure);
         longIsland.addIngredient(doubleMeasure); // Add to other drinks as needed
 
