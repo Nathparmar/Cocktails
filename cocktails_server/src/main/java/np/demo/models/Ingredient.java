@@ -30,14 +30,13 @@ public class Ingredient {
     private List<Alcohol> alcohols;
 
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "drinks_ingredients",
-//            joinColumns = @JoinColumn(name = "ingredient_id"),
-//            inverseJoinColumns = @JoinColumn(name = "estate_id")
-//    )
-//    @JsonIgnoreProperties({"ingredients"})
-//    private List<Drink> drinks;
+    @ManyToMany
+    @JoinTable(
+            name = "ingredient_mixers",
+            joinColumns = @JoinColumn(name = "ingredient_id"),
+            inverseJoinColumns = @JoinColumn(name = "mixer_id")
+    )
+    private List<Mixer> mixers;
 
     @ManyToMany(mappedBy = "ingredients")
     @JsonIgnoreProperties({"ingredients"})
@@ -48,6 +47,7 @@ public class Ingredient {
         this.measurement = measurement;
         this.drinks = new ArrayList<Drink>();
         this.alcohols = new ArrayList<>();
+        this.mixers = new ArrayList<>();
     }
 
     public Ingredient() {
@@ -84,6 +84,10 @@ public class Ingredient {
         this.alcohols.add(alcohol);
     }
 
+    public void addMixer(Mixer mixer) {
+        this.mixers.add(mixer);
+    }
+
 
     public List<Alcohol> getAlcohols() {
         return alcohols;
@@ -91,5 +95,13 @@ public class Ingredient {
 
     public void setAlcohols(List<Alcohol> alcohols) {
         this.alcohols = alcohols;
+    }
+
+    public List<Mixer> getMixers() {
+        return mixers;
+    }
+
+    public void setMixers(List<Mixer> mixers) {
+        this.mixers = mixers;
     }
 }

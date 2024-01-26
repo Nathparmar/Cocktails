@@ -3,9 +3,11 @@ package np.demo.components;
 import np.demo.models.Alcohol;
 import np.demo.models.Drink;
 import np.demo.models.Ingredient;
+import np.demo.models.Mixer;
 import np.demo.repositories.AlcoholRepository;
 import np.demo.repositories.DrinkRepository;
 import np.demo.repositories.IngredientRepository;
+import np.demo.repositories.MixerRepository;
 import np.demo.services.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -28,6 +30,9 @@ public class DataLoader implements ApplicationRunner {
     AlcoholRepository alcoholRepository;
 
     @Autowired
+    MixerRepository mixerRepository;
+
+    @Autowired
     DrinkService drinkService;
 
     public DataLoader(){
@@ -47,7 +52,7 @@ public class DataLoader implements ApplicationRunner {
         drinkRepository.save(vodkaDietCoke);
 
         Drink longIsland = new Drink("Long Island Iced Tea", "cocktail", "build in glass", "high rock glass", "lemon slice" );
-
+        drinkRepository.save(longIsland);
 
 
 //        Ingredient measurements
@@ -58,24 +63,34 @@ public class DataLoader implements ApplicationRunner {
         Ingredient singleMeasure = new Ingredient(25);
         ingredientRepository.save(singleMeasure);
 
+        Ingredient mixerMeasure = new Ingredient(150);
+        ingredientRepository.save(mixerMeasure);
+
+//        Alcohols
+
         Alcohol vodka = new Alcohol(" Absolut Vodka", "vodka", 40);
         alcoholRepository.save(vodka);
         doubleMeasure.addAlcohol(vodka);
 
-        Alcohol gin = new Alcohol("Edingurgh Gin", "gin", 40);
+        Alcohol gin = new Alcohol("Edinburgh Gin", "gin", 40);
         alcoholRepository.save(gin);
         doubleMeasure.addAlcohol(gin);
 
+//        Mixers
+
+        Mixer coke = new Mixer("Coke");
+        mixerRepository.save(coke);
+        mixerMeasure.addMixer(coke);
+
         // Add ingredients to drinks
         vodkaCoke.addIngredient(doubleMeasure);
-        vodkaCoke.addIngredient(singleMeasure);
+//        vodkaCoke.addIngredient(singleMeasure);
+        vodkaCoke.addIngredient(mixerMeasure);
         vodkaDietCoke.addIngredient(doubleMeasure);
         longIsland.addIngredient(doubleMeasure); // Add to other drinks as needed
 
         // Save drinks with associated ingredients
-        drinkRepository.save(vodkaCoke);
-        drinkRepository.save(vodkaDietCoke);
-        drinkRepository.save(longIsland);
+
 
 
 

@@ -14,15 +14,11 @@ public class Alcohol {
     @Column
     private Long id;
 
-
     @Column
     private String name;
 
     @Column
     private String type;
-
-    @Column
-    private String brand;
 
     @Column
     private double alcoholPercentage;
