@@ -16,14 +16,14 @@ public class Ingredient {
     @Column
     private Long id;
 
-    @Column
-    private String name;
+
 
     @Column
     private double measurement;
 
-    @Column
-    private double alcoholPercentage;
+    @OneToOne
+    private Alcohol alcohol;
+
 
 //    @ManyToMany
 //    @JoinTable(
@@ -38,12 +38,11 @@ public class Ingredient {
     @JsonIgnoreProperties({"ingredients"})
     private List<Drink> drinks;
 
-    public Ingredient( String name, double measurement, double alcoholPercentage) {
+    public Ingredient( double measurement) {
         this.id = id;
-        this.name = name;
         this.measurement = measurement;
-        this.alcoholPercentage = alcoholPercentage;
         this.drinks = new ArrayList<Drink>();
+        this.alcohol = new Alcohol();
     }
 
     public Ingredient() {
@@ -57,13 +56,7 @@ public class Ingredient {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public double getMeasurement() {
         return measurement;
@@ -73,13 +66,6 @@ public class Ingredient {
         this.measurement = measurement;
     }
 
-    public double getAlcoholPercentage() {
-        return alcoholPercentage;
-    }
-
-    public void setAlcoholPercentage(double alcoholPercentage) {
-        this.alcoholPercentage = alcoholPercentage;
-    }
 
     public List<Drink> getDrinks() {
         return drinks;
@@ -89,6 +75,16 @@ public class Ingredient {
         this.drinks = drinks;
     }
 
+//    public void addAlcohol(Alcohol alcohol) {
+//        this.alcohols.add(alcohol);
+//    }
 
 
+    public Alcohol getAlcohol() {
+        return alcohol;
+    }
+
+    public void setAlcohol(Alcohol alcohol) {
+        this.alcohol = alcohol;
+    }
 }

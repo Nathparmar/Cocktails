@@ -1,7 +1,9 @@
 package np.demo.components;
 
+import np.demo.models.Alcohol;
 import np.demo.models.Drink;
 import np.demo.models.Ingredient;
+import np.demo.repositories.AlcoholRepository;
 import np.demo.repositories.DrinkRepository;
 import np.demo.repositories.IngredientRepository;
 import np.demo.services.DrinkService;
@@ -23,6 +25,9 @@ public class DataLoader implements ApplicationRunner {
     IngredientRepository ingredientRepository;
 
     @Autowired
+    AlcoholRepository alcoholRepository;
+
+    @Autowired
     DrinkService drinkService;
 
     public DataLoader(){
@@ -41,27 +46,36 @@ public class DataLoader implements ApplicationRunner {
         Drink vodkaDietCoke = new Drink("Vodka Diet Coke", "spirit mixer", "build in glass",  "spirit glass", "lemon slice" );
         drinkRepository.save(vodkaDietCoke);
 
-         
+        Drink longIsland = new Drink("Long Island Iced Tea", "cocktail", "build in glass", "high rock glass", "lemon slice" );
 
-//        Ingredients
 
-        Ingredient vodka = new Ingredient("vodka", 50, 40);
-        vodkaCoke.addIngredient(vodka);
-        vodkaDietCoke.addIngredient(vodka);
-        ingredientRepository.save(vodka);
 
-        Ingredient coke = new Ingredient("coke", 150, 0);
-        vodkaCoke.addIngredient(coke);
-        ingredientRepository.save(coke);
+//        Ingredient measurements
 
-        Ingredient dietCoke = new Ingredient("diet coke", 150, 0);
-        vodkaDietCoke.addIngredient(dietCoke);
-        ingredientRepository.save(dietCoke);
+        Ingredient doubleMeasure = new Ingredient(50);
+        ingredientRepository.save(doubleMeasure);
+
+        Alcohol vodka = new Alcohol("Vodka", "vodka", "Absolut", 40);
+        alcoholRepository.save(vodka);
+        doubleMeasure.setAlcohol(vodka);
+
+        // Add ingredients to drinks
+        vodkaCoke.addIngredient(doubleMeasure);
+        vodkaDietCoke.addIngredient(doubleMeasure);
+        longIsland.addIngredient(doubleMeasure); // Add to other drinks as needed
+
+        // Save drinks with associated ingredients
+        drinkRepository.save(vodkaCoke);
+        drinkRepository.save(vodkaDietCoke);
+        drinkRepository.save(longIsland);
+
+
+
 
 //      calculate total alcohol percentage
-
-        drinkService.calculateTotalAlcoholPercentage(vodkaCoke);
-        drinkService.calculateTotalAlcoholPercentage(vodkaDietCoke);
+//
+//        drinkService.calculateTotalAlcoholPercentage(vodkaCoke);
+//        drinkService.calculateTotalAlcoholPercentage(vodkaDietCoke);
 
 
 

@@ -27,33 +27,33 @@ public class DrinkService {
         return drinkRepository.findById(id).get();
     }
 
-    public void calculateTotalAlcoholPercentage(Drink drink){
-        double totalPureAlcohol = 0.0; //in ml
-        double totalVolume = 0.0; //
-
-        for(Ingredient ingredient : drink.getIngredients()){
-            double alcoholContent = ingredient.getMeasurement() * (ingredient.getAlcoholPercentage()/100);
-            totalPureAlcohol += alcoholContent;
-            totalVolume += ingredient.getMeasurement();
-        }
-
-        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
-        drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
-    }
-
-    public void calculateTotalAlcoholPercentageDTO(DrinkDTO drinkDTO){
-        double totalPureAlcohol = 0.0; //in ml
-        double totalVolume = 0.0; //
-
-        for(Ingredient ingredient : drinkDTO.getIngredients()){
-            double alcoholContent = ingredient.getMeasurement() * (ingredient.getAlcoholPercentage()/100);
-            totalPureAlcohol += alcoholContent;
-            totalVolume += ingredient.getMeasurement();
-        }
-
-        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
-        drinkDTO.setTotalAlcoholPercentage(totalAlcoholPercentage);
-    }
+//    public void calculateTotalAlcoholPercentage(Drink drink){
+//        double totalPureAlcohol = 0.0; //in ml
+//        double totalVolume = 0.0; //
+//
+//        for(Ingredient ingredient : drink.getIngredients()){
+//            double alcoholContent = ingredient.getMeasurement() * (ingredient.getAlcoholPercentage()/100);
+//            totalPureAlcohol += alcoholContent;
+//            totalVolume += ingredient.getMeasurement();
+//        }
+//
+//        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
+//        drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
+//    }
+//
+//    public void calculateTotalAlcoholPercentageDTO(DrinkDTO drinkDTO){
+//        double totalPureAlcohol = 0.0; //in ml
+//        double totalVolume = 0.0; //
+//
+//        for(Ingredient ingredient : drinkDTO.getIngredients()){
+//            double alcoholContent = ingredient.getMeasurement() * (ingredient.getAlcoholPercentage()/100);
+//            totalPureAlcohol += alcoholContent;
+//            totalVolume += ingredient.getMeasurement();
+//        }
+//
+//        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
+//        drinkDTO.setTotalAlcoholPercentage(totalAlcoholPercentage);
+//    }
 
 
 
