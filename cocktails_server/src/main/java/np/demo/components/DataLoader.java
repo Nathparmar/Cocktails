@@ -105,7 +105,7 @@ public class DataLoader implements ApplicationRunner {
         vodkaDietCoke.addIngredient(vodkaDietCokeMixerMeasure);
         vodkaDietCokeMixerMeasure.addMixer(dietCoke);
 
-//        Long Island 
+//        Long Island
 
         Drink longIsland = new Drink("Long Island Iced Tea", "cocktail", "Shake all ingredients. Pour them in a glass, then top with coca cola", "High rock glass", "Lemon wheel" );
         drinkRepository.save(longIsland);
@@ -126,6 +126,7 @@ public class DataLoader implements ApplicationRunner {
         longIsland.addIngredient(longIslandCokeMeasure);
         longIslandCokeMeasure.addMixer(coke);
 
+//        Passion fruit martini
 
 
 
@@ -142,10 +143,14 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-//      calculate total alcohol percentage
+
+
 //
-//        drinkService.calculateTotalAlcoholPercentage(vodkaCoke);
-//        drinkService.calculateTotalAlcoholPercentage(vodkaDietCoke);
+//      calculate total alcohol percentage
+
+        drinkService.calculateTotalAlcoholPercentage(vodkaCoke);
+        drinkService.calculateTotalAlcoholPercentage(vodkaDietCoke);
+        drinkService.calculateTotalAlcoholPercentage(longIsland);
 
 
 

@@ -1,7 +1,9 @@
 package np.demo.services;
 
 
+import np.demo.models.Alcohol;
 import np.demo.models.Drink;
+import np.demo.models.Ingredient;
 import np.demo.repositories.DrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,6 +62,7 @@ public class DrinkService {
 //        double totalPureAlcohol = 0.0; //in ml
 //        double totalVolume = 0.0; //
 //
+//
 //        for(Ingredient ingredient : drink.getIngredients()){
 //            double alcoholContent = ingredient.getMeasurement() * (ingredient.getAlcoholPercentage()/100);
 //            totalPureAlcohol += alcoholContent;
@@ -69,20 +72,32 @@ public class DrinkService {
 //        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
 //        drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
 //    }
-//
-//    public void calculateTotalAlcoholPercentageDTO(DrinkDTO drinkDTO){
-//        double totalPureAlcohol = 0.0; //in ml
-//        double totalVolume = 0.0; //
-//
-//        for(Ingredient ingredient : drinkDTO.getIngredients()){
-//            double alcoholContent = ingredient.getMeasurement() * (ingredient.getAlcoholPercentage()/100);
-//            totalPureAlcohol += alcoholContent;
-//            totalVolume += ingredient.getMeasurement();
-//        }
-//
-//        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
-//        drinkDTO.setTotalAlcoholPercentage(totalAlcoholPercentage);
-//    }
+
+    public void calculateTotalAlcoholPercentage(Drink drink) {
+        double totalPureAlcohol = 0.0; // in ml
+        double totalVolume = 0.0;
+
+        for (Ingredient ingredient : drink.getIngredients()) {
+            if (ingredient.getAlcohols() != null && !ingredient.getAlcohols().isEmpty()) {
+                // Access alcohol percentage directly from alcohol objects
+                for (Alcohol alcohol : ingredient.getAlcohols()) {
+                    double alcoholContent = ingredient.getMeasurement() * (alcohol.getAlcoholPercentage() / 100);
+                    totalPureAlcohol += alcoholContent;
+                    totalVolume += ingredient.getMeasurement();
+                }
+            } else if (ingredient.getMixers() != null && !ingredient.getMixers().isEmpty()) {
+                // Mixers all have 0% alcohol
+                totalVolume += ingredient.getMeasurement();
+            }
+
+        }
+
+        double totalAlcoholPercentage = (totalPureAlcohol / totalVolume) * 100;
+        double alcoholUnits = (totalVolume*totalAlcoholPercentage)/1000;
+        drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
+        drink.setAlcoholUnits(alcoholUnits);
+    }
+
 
 
 
