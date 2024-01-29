@@ -42,7 +42,7 @@ public class DrinkService {
 
     }
 
-    
+
     public Drink findDrinkById(Long id) {
         List<Drink> drinks = setEmptyIngredientsToNull();
 

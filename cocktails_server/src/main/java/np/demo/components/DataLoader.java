@@ -57,41 +57,51 @@ public class DataLoader implements ApplicationRunner {
 
 //        Ingredient measurements
 
-        Ingredient doubleMeasure = new Ingredient(50);
-        ingredientRepository.save(doubleMeasure);
-        Ingredient doubleMeasure1 = new Ingredient(50);
-        ingredientRepository.save(doubleMeasure1);
+        Ingredient doubleMeasureVodkaCoke = new Ingredient(50);
+        ingredientRepository.save(doubleMeasureVodkaCoke);
+
+        Ingredient doubleMeasureVodkaDietCoke = new Ingredient(50);
+        ingredientRepository.save(doubleMeasureVodkaDietCoke);
 
 
 
         Ingredient singleMeasure = new Ingredient(25);
         ingredientRepository.save(singleMeasure);
 
-        Ingredient mixerMeasure = new Ingredient(150);
-        ingredientRepository.save(mixerMeasure);
+        Ingredient vodkaCokeMixerMeasure = new Ingredient(150);
+        ingredientRepository.save(vodkaCokeMixerMeasure);
+
+        Ingredient vodkaDietCokeMixerMeasure = new Ingredient(150);
+        ingredientRepository.save(vodkaDietCokeMixerMeasure);
 
 //        Alcohols
 
         Alcohol vodka = new Alcohol(" Absolut Vodka", "vodka", 40);
         alcoholRepository.save(vodka);
-        doubleMeasure.addAlcohol(vodka);
+        doubleMeasureVodkaCoke.addAlcohol(vodka);
+        doubleMeasureVodkaDietCoke.addAlcohol(vodka);
 
         Alcohol gin = new Alcohol("Edinburgh Gin", "gin", 40);
         alcoholRepository.save(gin);
-        doubleMeasure1.addAlcohol(gin);
+//        doubleMeasure.addAlcohol(gin);
 
 //        Mixers
 
         Mixer coke = new Mixer("Coke");
         mixerRepository.save(coke);
-        mixerMeasure.addMixer(coke);
+        vodkaCokeMixerMeasure.addMixer(coke);
+
+        Mixer dietCoke = new Mixer("Diet Coke");
+        mixerRepository.save(dietCoke);
+        vodkaDietCokeMixerMeasure.addMixer(dietCoke);
 
         // Add ingredients to drinks
-        vodkaCoke.addIngredient(doubleMeasure);
-        vodkaCoke.addIngredient(doubleMeasure1);
-        vodkaCoke.addIngredient(mixerMeasure);
-        vodkaDietCoke.addIngredient(doubleMeasure);
-        longIsland.addIngredient(doubleMeasure); // Add to other drinks as needed
+        vodkaCoke.addIngredient(doubleMeasureVodkaCoke);
+//        vodkaCoke.addIngredient(doubleMeasure1);
+        vodkaCoke.addIngredient(vodkaCokeMixerMeasure);
+        vodkaDietCoke.addIngredient(doubleMeasureVodkaDietCoke);
+        vodkaDietCoke.addIngredient(vodkaDietCokeMixerMeasure);
+//        longIsland.addIngredient(doubleMeasure);
 
         // Save drinks with associated ingredients
 
