@@ -1,8 +1,7 @@
 package np.demo.services;
 
-import np.demo.DTOs.DrinkDTO;
+
 import np.demo.models.Drink;
-import np.demo.models.Ingredient;
 import np.demo.repositories.DrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +18,28 @@ public class DrinkService {
         drinkRepository.save(drink);
     }
 
+
     public List<Drink> findAllDrinks(){
-        return drinkRepository.findAll();
+        List<Drink> drinks = drinkRepository.findAll();
+
+        drinks.forEach(drink -> {
+            drink.getIngredients().forEach(ingredient -> {
+                if (ingredient.getMixers() != null && ingredient.getMixers().isEmpty()) {
+                    ingredient.setMixers(null);
+                }
+
+                if (ingredient.getAlcohols() != null && ingredient.getAlcohols().isEmpty()) {
+                    ingredient.setAlcohols(null);
+                }
+            });
+        });
+
+        return drinks;
     }
+
+
+
+
 
     public Drink findDrink(Long id){
         return drinkRepository.findById(id).get();

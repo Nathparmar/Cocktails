@@ -26,7 +26,7 @@ public class DrinkController {
 //    GET
     @GetMapping
     public ResponseEntity<List<Drink>> getAllDrinks(){
-        return new ResponseEntity<>(drinkRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(drinkService.findAllDrinks(), HttpStatus.OK);
     }
 
     @GetMapping(value = "{id}")

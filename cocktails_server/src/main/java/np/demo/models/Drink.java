@@ -23,10 +23,6 @@ public class Drink {
     @Column
     private String type;
 
-//    @ManyToMany(mappedBy = "drink")
-//    @JsonIgnoreProperties({"drink"})
-//    private List<Ingredient> ingredients;
-
     @ManyToMany
     @JoinTable(
             name = "drink_ingredient",

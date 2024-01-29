@@ -1,6 +1,7 @@
 package np.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "ingredients")
+@Table(name = "measurements")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Ingredient {
 
     @Id
@@ -43,7 +45,6 @@ public class Ingredient {
     private List<Drink> drinks;
 
     public Ingredient( double measurement) {
-        this.id = id;
         this.measurement = measurement;
         this.drinks = new ArrayList<Drink>();
         this.alcohols = new ArrayList<>();

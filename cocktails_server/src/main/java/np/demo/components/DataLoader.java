@@ -59,6 +59,10 @@ public class DataLoader implements ApplicationRunner {
 
         Ingredient doubleMeasure = new Ingredient(50);
         ingredientRepository.save(doubleMeasure);
+        Ingredient doubleMeasure1 = new Ingredient(50);
+        ingredientRepository.save(doubleMeasure1);
+
+
 
         Ingredient singleMeasure = new Ingredient(25);
         ingredientRepository.save(singleMeasure);
@@ -74,7 +78,7 @@ public class DataLoader implements ApplicationRunner {
 
         Alcohol gin = new Alcohol("Edinburgh Gin", "gin", 40);
         alcoholRepository.save(gin);
-        doubleMeasure.addAlcohol(gin);
+        doubleMeasure1.addAlcohol(gin);
 
 //        Mixers
 
@@ -84,7 +88,7 @@ public class DataLoader implements ApplicationRunner {
 
         // Add ingredients to drinks
         vodkaCoke.addIngredient(doubleMeasure);
-//        vodkaCoke.addIngredient(singleMeasure);
+        vodkaCoke.addIngredient(doubleMeasure1);
         vodkaCoke.addIngredient(mixerMeasure);
         vodkaDietCoke.addIngredient(doubleMeasure);
         longIsland.addIngredient(doubleMeasure); // Add to other drinks as needed
