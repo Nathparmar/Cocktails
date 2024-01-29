@@ -14,6 +14,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import java.beans.Transient;
 
@@ -43,67 +44,99 @@ public class DataLoader implements ApplicationRunner {
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
 
-//        Drinks
 
-        Drink vodkaCoke = new Drink("Vodka Coke", "spirit mixer", "build in glass", "spirit glass", "lemon slice" );
-        drinkRepository.save(vodkaCoke);
-
-        Drink vodkaDietCoke = new Drink("Vodka Diet Coke", "spirit mixer", "build in glass",  "spirit glass", "lemon slice" );
-        drinkRepository.save(vodkaDietCoke);
-
-        Drink longIsland = new Drink("Long Island Iced Tea", "cocktail", "build in glass", "high rock glass", "lemon slice" );
-        drinkRepository.save(longIsland);
-
-
-//        Ingredient measurements
-
-        Ingredient doubleMeasureVodkaCoke = new Ingredient(50);
-        ingredientRepository.save(doubleMeasureVodkaCoke);
-
-        Ingredient doubleMeasureVodkaDietCoke = new Ingredient(50);
-        ingredientRepository.save(doubleMeasureVodkaDietCoke);
-
-
-
-        Ingredient singleMeasure = new Ingredient(25);
-        ingredientRepository.save(singleMeasure);
-
-        Ingredient vodkaCokeMixerMeasure = new Ingredient(150);
-        ingredientRepository.save(vodkaCokeMixerMeasure);
-
-        Ingredient vodkaDietCokeMixerMeasure = new Ingredient(150);
-        ingredientRepository.save(vodkaDietCokeMixerMeasure);
-
-//        Alcohols
+        //        Alcohols
 
         Alcohol vodka = new Alcohol(" Absolut Vodka", "vodka", 40);
         alcoholRepository.save(vodka);
-        doubleMeasureVodkaCoke.addAlcohol(vodka);
-        doubleMeasureVodkaDietCoke.addAlcohol(vodka);
 
         Alcohol gin = new Alcohol("Edinburgh Gin", "gin", 40);
         alcoholRepository.save(gin);
-//        doubleMeasure.addAlcohol(gin);
+
+        Alcohol tequilaSilver = new Alcohol("Olmeca Silver Tequila", "silver tequila", 35);
+        alcoholRepository.save(tequilaSilver);
+
+        Alcohol bacardi = new Alcohol("Bacardi", "white rum", 37.5);
+        alcoholRepository.save(bacardi);
+
+
+
 
 //        Mixers
 
-        Mixer coke = new Mixer("Coke");
+        Mixer coke = new Mixer("Coca Cola");
         mixerRepository.save(coke);
+
+        Mixer dietCoke = new Mixer("Diet Coca Cola");
+        mixerRepository.save(dietCoke);
+
+        Mixer lemonJuice = new Mixer("Lemon Juice");
+        mixerRepository.save(lemonJuice);
+
+        Mixer sugarSyrup = new Mixer("Sugar Syrup");
+        mixerRepository.save(sugarSyrup);
+
+
+//     /////////////// //  Drinks /////////////////////
+
+//        Vodka Coke
+
+        Drink vodkaCoke = new Drink("Vodka Coke", "spirit mixer", "build in glass", "spirit glass", "Lemon slice" );
+        drinkRepository.save(vodkaCoke);
+        Ingredient doubleMeasureVodkaCoke = new Ingredient(50);
+        ingredientRepository.save(doubleMeasureVodkaCoke);
+        vodkaCoke.addIngredient(doubleMeasureVodkaCoke);
+        doubleMeasureVodkaCoke.addAlcohol(vodka);
+        Ingredient vodkaCokeMixerMeasure = new Ingredient(150);
+        ingredientRepository.save(vodkaCokeMixerMeasure);
+        vodkaCoke.addIngredient(vodkaCokeMixerMeasure);
         vodkaCokeMixerMeasure.addMixer(coke);
 
-        Mixer dietCoke = new Mixer("Diet Coke");
-        mixerRepository.save(dietCoke);
+//        Vodka diet Coke
+
+        Drink vodkaDietCoke = new Drink("Vodka Diet Coke", "spirit mixer", "build in glass",  "spirit glass", "Lemon slice" );
+        drinkRepository.save(vodkaDietCoke);
+        Ingredient doubleMeasureVodkaDietCoke = new Ingredient(50);
+        ingredientRepository.save(doubleMeasureVodkaDietCoke);
+        vodkaDietCoke.addIngredient(doubleMeasureVodkaDietCoke);
+        doubleMeasureVodkaDietCoke.addAlcohol(vodka);
+        Ingredient vodkaDietCokeMixerMeasure = new Ingredient(150);
+        ingredientRepository.save(vodkaDietCokeMixerMeasure);
+        vodkaDietCoke.addIngredient(vodkaDietCokeMixerMeasure);
         vodkaDietCokeMixerMeasure.addMixer(dietCoke);
 
-        // Add ingredients to drinks
-        vodkaCoke.addIngredient(doubleMeasureVodkaCoke);
-//        vodkaCoke.addIngredient(doubleMeasure1);
-        vodkaCoke.addIngredient(vodkaCokeMixerMeasure);
-        vodkaDietCoke.addIngredient(doubleMeasureVodkaDietCoke);
-        vodkaDietCoke.addIngredient(vodkaDietCokeMixerMeasure);
-//        longIsland.addIngredient(doubleMeasure);
+//        Long Island 
 
-        // Save drinks with associated ingredients
+        Drink longIsland = new Drink("Long Island Iced Tea", "cocktail", "Shake all ingredients. Pour them in a glass, then top with coca cola", "High rock glass", "Lemon wheel" );
+        drinkRepository.save(longIsland);
+        Ingredient longIslandAlcMeasure = new Ingredient(12.5);
+        ingredientRepository.save(longIslandAlcMeasure);
+        longIsland.addIngredient(longIslandAlcMeasure);
+        longIslandAlcMeasure.addAlcohol(bacardi);
+        longIslandAlcMeasure.addAlcohol(vodka);
+        longIslandAlcMeasure.addAlcohol(tequilaSilver);
+        longIslandAlcMeasure.addAlcohol(gin);
+        Ingredient longIslandSyrupMeasure = new Ingredient(25);
+        ingredientRepository.save(longIslandSyrupMeasure);
+        longIsland.addIngredient(longIslandSyrupMeasure);
+        longIslandSyrupMeasure.addMixer(sugarSyrup);
+        longIslandSyrupMeasure.addMixer(lemonJuice);
+        Ingredient longIslandCokeMeasure = new Ingredient(100);
+        ingredientRepository.save(longIslandCokeMeasure);
+        longIsland.addIngredient(longIslandCokeMeasure);
+        longIslandCokeMeasure.addMixer(coke);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
