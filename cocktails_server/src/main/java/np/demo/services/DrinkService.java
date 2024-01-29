@@ -74,17 +74,18 @@ public class DrinkService {
 //    }
 
     public void calculateTotalAlcoholPercentage(Drink drink) {
-        double totalPureAlcohol = 0.0; // in ml
+        double totalPureAlcohol = 0.0;
         double totalVolume = 0.0;
 
         for (Ingredient ingredient : drink.getIngredients()) {
             if (ingredient.getAlcohols() != null && !ingredient.getAlcohols().isEmpty()) {
-                // Access alcohol percentage directly from alcohol objects
+
                 for (Alcohol alcohol : ingredient.getAlcohols()) {
                     double alcoholContent = ingredient.getMeasurement() * (alcohol.getAlcoholPercentage() / 100);
                     totalPureAlcohol += alcoholContent;
                     totalVolume += ingredient.getMeasurement();
                 }
+
             } else if (ingredient.getMixers() != null && !ingredient.getMixers().isEmpty()) {
                 // Mixers all have 0% alcohol
                 totalVolume += ingredient.getMeasurement();
@@ -93,7 +94,7 @@ public class DrinkService {
         }
 
         double totalAlcoholPercentage = (totalPureAlcohol / totalVolume) * 100;
-        double alcoholUnits = (totalVolume*totalAlcoholPercentage)/1000;
+        double alcoholUnits = (totalVolume * totalAlcoholPercentage)/1000;
         drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
         drink.setAlcoholUnits(alcoholUnits);
     }

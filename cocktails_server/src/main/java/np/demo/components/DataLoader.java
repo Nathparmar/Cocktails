@@ -47,8 +47,8 @@ public class DataLoader implements ApplicationRunner {
 
         //        Alcohols
 
-        Alcohol vodka = new Alcohol(" Absolut Vodka", "vodka", 40);
-        alcoholRepository.save(vodka);
+        Alcohol absolutVodka = new Alcohol("Absolut Vodka", "vodka", 40);
+        alcoholRepository.save(absolutVodka);
 
         Alcohol gin = new Alcohol("Edinburgh Gin", "gin", 40);
         alcoholRepository.save(gin);
@@ -59,6 +59,23 @@ public class DataLoader implements ApplicationRunner {
         Alcohol bacardi = new Alcohol("Bacardi", "white rum", 37.5);
         alcoholRepository.save(bacardi);
 
+        Alcohol vanillaVodka = new Alcohol("Absolut Vanilla Vodka", "vanilla vodka", 38);
+        alcoholRepository.save(vanillaVodka);
+
+        Alcohol passoa = new Alcohol("Passoa", " passion-fruit liquer", 17);
+        alcoholRepository.save(passoa);
+
+        Alcohol kahlua = new Alcohol("Kahlua", "coffee liquer", 16);
+        alcoholRepository.save(kahlua);
+
+        Alcohol chambord = new Alcohol("Chambord", " French liquer", 16.5);
+        alcoholRepository.save(chambord);
+
+        Alcohol peachSchnapps = new Alcohol("Archers Peach Schnapps", "peach schnapps", 18);
+        alcoholRepository.save(peachSchnapps);
+
+        Alcohol disaronno = new Alcohol("Disaronno", "liquer", 28);
+        alcoholRepository.save(disaronno);
 
 
 
@@ -76,6 +93,31 @@ public class DataLoader implements ApplicationRunner {
         Mixer sugarSyrup = new Mixer("Sugar Syrup");
         mixerRepository.save(sugarSyrup);
 
+        Mixer passionFruitPuree = new Mixer("Passion fruit puree");
+        mixerRepository.save(passionFruitPuree);
+
+        Mixer limeJuice = new Mixer("Lime Juice");
+        mixerRepository.save(limeJuice);
+
+        Mixer pineappleJuice = new Mixer("Pineapple Juice");
+        mixerRepository.save(pineappleJuice);
+
+        Mixer orangeJuice = new Mixer("Orange Juice");
+        mixerRepository.save(orangeJuice);
+
+        Mixer cranberryJuice = new Mixer("Cranberry Juice");
+        mixerRepository.save(cranberryJuice);
+
+        Mixer appleJuice = new Mixer("Apple Juice");
+        mixerRepository.save(appleJuice);
+
+        Mixer strawberrySyrup = new Mixer("Strawberry Syrup");
+        mixerRepository.save(strawberrySyrup);
+
+        Mixer espressoCoffee = new Mixer("Espresso coffee");
+        mixerRepository.save(espressoCoffee);
+
+
 
 //     /////////////// //  Drinks /////////////////////
 
@@ -86,7 +128,7 @@ public class DataLoader implements ApplicationRunner {
         Ingredient doubleMeasureVodkaCoke = new Ingredient(50);
         ingredientRepository.save(doubleMeasureVodkaCoke);
         vodkaCoke.addIngredient(doubleMeasureVodkaCoke);
-        doubleMeasureVodkaCoke.addAlcohol(vodka);
+        doubleMeasureVodkaCoke.addAlcohol(absolutVodka);
         Ingredient vodkaCokeMixerMeasure = new Ingredient(150);
         ingredientRepository.save(vodkaCokeMixerMeasure);
         vodkaCoke.addIngredient(vodkaCokeMixerMeasure);
@@ -99,7 +141,7 @@ public class DataLoader implements ApplicationRunner {
         Ingredient doubleMeasureVodkaDietCoke = new Ingredient(50);
         ingredientRepository.save(doubleMeasureVodkaDietCoke);
         vodkaDietCoke.addIngredient(doubleMeasureVodkaDietCoke);
-        doubleMeasureVodkaDietCoke.addAlcohol(vodka);
+        doubleMeasureVodkaDietCoke.addAlcohol(absolutVodka);
         Ingredient vodkaDietCokeMixerMeasure = new Ingredient(150);
         ingredientRepository.save(vodkaDietCokeMixerMeasure);
         vodkaDietCoke.addIngredient(vodkaDietCokeMixerMeasure);
@@ -113,7 +155,7 @@ public class DataLoader implements ApplicationRunner {
         ingredientRepository.save(longIslandAlcMeasure);
         longIsland.addIngredient(longIslandAlcMeasure);
         longIslandAlcMeasure.addAlcohol(bacardi);
-        longIslandAlcMeasure.addAlcohol(vodka);
+        longIslandAlcMeasure.addAlcohol(absolutVodka);
         longIslandAlcMeasure.addAlcohol(tequilaSilver);
         longIslandAlcMeasure.addAlcohol(gin);
         Ingredient longIslandSyrupMeasure = new Ingredient(25);
@@ -129,13 +171,95 @@ public class DataLoader implements ApplicationRunner {
 //        Passion fruit martini
 
 
+        Drink passionFruitMartini = new Drink("Passion fruit Martini", "cocktail", "shake and double strain", "Coupe glass", "cut in half passion fruit");
+        drinkRepository.save(passionFruitMartini);
+        Ingredient passionFruitMeasure = new Ingredient(25);
+        ingredientRepository.save(passionFruitMeasure);
+        passionFruitMartini.addIngredient(passionFruitMeasure);
+        passionFruitMeasure.addAlcohol(passoa);
+        passionFruitMeasure.addAlcohol(vanillaVodka);
+        passionFruitMeasure.addMixer(pineappleJuice);
+        passionFruitMeasure.addMixer(passionFruitPuree);
+        Ingredient passionFruitMeasure2 = new Ingredient(15);
+        ingredientRepository.save(passionFruitMeasure2);
+        passionFruitMartini.addIngredient(passionFruitMeasure2);
+        passionFruitMeasure2.addMixer(limeJuice);
+        passionFruitMeasure2.addMixer(sugarSyrup);
 
+//        Espresso Martini
 
+        Drink espressoMartini = new Drink("Espresso Martini", "cocktail", "shake and double strain", "Coupe glass", "Coffee beans");
+        drinkRepository.save(espressoMartini);
+        Ingredient espressoMeasure = new Ingredient(25);
+        ingredientRepository.save(espressoMeasure);
+        espressoMartini.addIngredient(espressoMeasure);
+        espressoMeasure.addAlcohol(absolutVodka);
+        espressoMeasure.addAlcohol(kahlua);
+        espressoMeasure.addMixer(espressoCoffee);
+        espressoMeasure.addMixer(sugarSyrup);
 
+//        French Martini
 
+        Drink frenchMartini = new Drink("French Martini", "cocktail", "shake and double strain", "Coupe glass", "Lemon wheel");
+        drinkRepository.save(frenchMartini);
+        Ingredient frenchMeasure1 = new Ingredient(25);
+        ingredientRepository.save(frenchMeasure1);
+        frenchMartini.addIngredient(frenchMeasure1);
+        frenchMeasure1.addAlcohol(absolutVodka);
+        frenchMeasure1.addAlcohol(chambord);
+        Ingredient frenchMeasure2 = new Ingredient(50);
+        ingredientRepository.save(frenchMeasure2);
+        frenchMartini.addIngredient(frenchMeasure2);
+        frenchMeasure2.addMixer(pineappleJuice);
+        Ingredient frenchMeasure3 = new Ingredient(10);
+        ingredientRepository.save(frenchMeasure3);
+        frenchMartini.addIngredient(frenchMeasure3);
+        frenchMeasure3.addMixer(limeJuice);
 
+//        Sex on the Beach
 
+        Drink sexOnTheBeach = new Drink("Sex on the Beach", "cocktail", "build in glass, orange juice followed by cranberry juice", "High rock", "Orange wheel");
+        drinkRepository.save(sexOnTheBeach);
+        Ingredient sexOnTheBeachMeasure25 = new Ingredient(25);
+        ingredientRepository.save(sexOnTheBeachMeasure25);
+        sexOnTheBeach.addIngredient(sexOnTheBeachMeasure25);
+        sexOnTheBeachMeasure25.addAlcohol(absolutVodka);
+        sexOnTheBeachMeasure25.addAlcohol(peachSchnapps);
+        Ingredient sexOnTheBeach50 = new Ingredient(50);
+        ingredientRepository.save(sexOnTheBeach50);
+        sexOnTheBeach.addIngredient(sexOnTheBeach50);
+        sexOnTheBeach50.addMixer(orangeJuice);
+        sexOnTheBeach50.addMixer(cranberryJuice);
 
+//        Disaronno Sours
+
+        Drink disaronnoSours = new Drink("Disaronno Sours", "cocktail", "shake and double strain", "Short rock", "Lemon wheel");
+        drinkRepository.save(disaronnoSours);
+        Ingredient disaronnoSours50 = new Ingredient(50);
+        ingredientRepository.save(disaronnoSours50);
+        disaronnoSours.addIngredient(disaronnoSours50);
+        disaronnoSours50.addAlcohol(disaronno);
+        Ingredient disaronnoSours25 = new Ingredient(25);
+        ingredientRepository.save(disaronnoSours25);
+        disaronnoSours.addIngredient(disaronnoSours25);
+        disaronnoSours25.addMixer(sugarSyrup);
+        disaronnoSours25.addMixer(pineappleJuice);
+        disaronnoSours25.addMixer(lemonJuice);
+
+//        Strawberry Daiquiri
+
+        Drink strawberryDaiquiri = new Drink("Strawberry Daiquiri", "cocktail", "shake and single strain", "Coupe glass", "Strawberries");
+        drinkRepository.save(strawberryDaiquiri);
+        Ingredient strawberryDaiquiri50 = new Ingredient(50);
+        ingredientRepository.save(strawberryDaiquiri50);
+        strawberryDaiquiri.addIngredient(strawberryDaiquiri50);
+        strawberryDaiquiri50.addAlcohol(bacardi);
+        Ingredient strawberryDaiquiri25 = new Ingredient(25);
+        ingredientRepository.save(strawberryDaiquiri25);
+        strawberryDaiquiri.addIngredient(strawberryDaiquiri25);
+        strawberryDaiquiri25.addMixer(sugarSyrup);
+        strawberryDaiquiri25.addMixer(strawberrySyrup);
+        strawberryDaiquiri25.addMixer(limeJuice);
 
 
 
@@ -151,6 +275,12 @@ public class DataLoader implements ApplicationRunner {
         drinkService.calculateTotalAlcoholPercentage(vodkaCoke);
         drinkService.calculateTotalAlcoholPercentage(vodkaDietCoke);
         drinkService.calculateTotalAlcoholPercentage(longIsland);
+        drinkService.calculateTotalAlcoholPercentage(passionFruitMartini);
+        drinkService.calculateTotalAlcoholPercentage(espressoMartini);
+        drinkService.calculateTotalAlcoholPercentage(frenchMartini);
+        drinkService.calculateTotalAlcoholPercentage(sexOnTheBeach);
+        drinkService.calculateTotalAlcoholPercentage(disaronnoSours);
+        drinkService.calculateTotalAlcoholPercentage(strawberryDaiquiri);
 
 
 
