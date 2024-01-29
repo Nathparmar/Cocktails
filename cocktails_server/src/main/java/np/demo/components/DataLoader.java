@@ -84,6 +84,18 @@ public class DataLoader implements ApplicationRunner {
         Mixer coke = new Mixer("Coca Cola");
         mixerRepository.save(coke);
 
+        Mixer lemonade = new Mixer("Lemonade");
+        mixerRepository.save(lemonade);
+
+        Mixer sodaWater = new Mixer("Soda water");
+        mixerRepository.save(sodaWater);
+
+        Mixer redBull = new Mixer("Red Bull");
+        mixerRepository.save(redBull);
+
+        Mixer tonic = new Mixer("Tonic Water");
+        mixerRepository.save(tonic);
+
         Mixer dietCoke = new Mixer("Diet Coca Cola");
         mixerRepository.save(dietCoke);
 

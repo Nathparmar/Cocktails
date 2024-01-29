@@ -1,7 +1,7 @@
 package np.demo.controllers;
 
-import np.demo.models.Alcohol;
-import np.demo.services.AlcoholService;
+import np.demo.models.Mixer;
+import np.demo.services.MixerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,23 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("alcohols")
-public class AlcoholController {
+@RequestMapping("mixers")
+public class MixerController {
 
     @Autowired
-    AlcoholService alcoholService;
+    MixerService mixerService;
 
 //    GET
-
     @GetMapping
-    public ResponseEntity<List<Alcohol>> getAllAlcohols(){
-        return new ResponseEntity<>(alcoholService.findAllAlcohols(), HttpStatus.OK);
+    public ResponseEntity<List<Mixer>> getAllMixers(){
+        return new ResponseEntity<>(mixerService.findAllMixers(), HttpStatus.OK);
     }
 
     @GetMapping(value = "{id}")
-    public ResponseEntity<Alcohol> getAlcoholById(@PathVariable Long id){
-        return new ResponseEntity<>(alcoholService.findAlcoholById(id), HttpStatus.OK);
+    public ResponseEntity<Mixer> getMixerById(@PathVariable Long id){
+        return new ResponseEntity<>(mixerService.findMixerById(id), HttpStatus.OK);
     }
-
-
 }

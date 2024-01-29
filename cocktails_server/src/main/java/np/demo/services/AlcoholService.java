@@ -16,4 +16,8 @@ public class AlcoholService {
     public List<Alcohol> findAllAlcohols(){
         return alcoholRepository.findAll();
     }
+
+    public Alcohol findAlcoholById(Long id) {
+        return alcoholRepository.findById(id).get();
+    }
 }
