@@ -30,8 +30,8 @@ public class DrinkController {
     }
 
     @GetMapping(value = "{id}")
-    public ResponseEntity<Optional<Drink>> getDrinkById(@PathVariable Long id){
-        return new ResponseEntity<>(drinkRepository.findById(id), HttpStatus.OK);
+    public ResponseEntity<Drink> getDrinkById(@PathVariable Long id){
+        return new ResponseEntity<>(drinkService.findDrinkById(id), HttpStatus.OK);
     }
 
 //    @PostMapping

@@ -18,8 +18,7 @@ public class DrinkService {
         drinkRepository.save(drink);
     }
 
-
-    public List<Drink> findAllDrinks(){
+    public List<Drink> setEmptyIngredientsToNull(){
         List<Drink> drinks = drinkRepository.findAll();
 
         drinks.forEach(drink -> {
@@ -38,12 +37,24 @@ public class DrinkService {
     }
 
 
+    public List<Drink> findAllDrinks(){
+       return setEmptyIngredientsToNull();
 
-
-
-    public Drink findDrink(Long id){
-        return drinkRepository.findById(id).get();
     }
+
+    
+    public Drink findDrinkById(Long id) {
+        List<Drink> drinks = setEmptyIngredientsToNull();
+
+        for (Drink drink : drinks) {
+            if (drink.getId().equals(id)) {
+                return drink;
+            }
+        }
+
+        return null;
+    }
+
 
 //    public void calculateTotalAlcoholPercentage(Drink drink){
 //        double totalPureAlcohol = 0.0; //in ml
