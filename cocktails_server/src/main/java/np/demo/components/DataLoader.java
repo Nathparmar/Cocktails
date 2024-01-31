@@ -281,18 +281,16 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-//
-//      calculate total alcohol percentage
 
-        drinkService.calculateTotalAlcoholPercentage(vodkaCoke);
-        drinkService.calculateTotalAlcoholPercentage(vodkaDietCoke);
-        drinkService.calculateTotalAlcoholPercentage(longIsland);
-        drinkService.calculateTotalAlcoholPercentage(passionFruitMartini);
-        drinkService.calculateTotalAlcoholPercentage(espressoMartini);
-        drinkService.calculateTotalAlcoholPercentage(frenchMartini);
-        drinkService.calculateTotalAlcoholPercentage(sexOnTheBeach);
-        drinkService.calculateTotalAlcoholPercentage(disaronnoSours);
-        drinkService.calculateTotalAlcoholPercentage(strawberryDaiquiri);
+        drinkService.calculateABV(vodkaCoke);
+        drinkService.calculateABV(vodkaDietCoke);
+        drinkService.calculateABV(longIsland);
+        drinkService.calculateABV(passionFruitMartini);
+        drinkService.calculateABV(espressoMartini);
+        drinkService.calculateABV(frenchMartini);
+        drinkService.calculateABV(sexOnTheBeach);
+        drinkService.calculateABV(disaronnoSours);
+        drinkService.calculateABV(strawberryDaiquiri);
 
 
 

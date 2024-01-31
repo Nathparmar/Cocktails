@@ -4,6 +4,7 @@ package np.demo.services;
 import np.demo.models.Alcohol;
 import np.demo.models.Drink;
 import np.demo.models.Ingredient;
+import np.demo.models.Mixer;
 import np.demo.repositories.DrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,27 +74,30 @@ public class DrinkService {
 //        drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
 //    }
 
-    public void calculateTotalAlcoholPercentage(Drink drink) {
+    public void calculateABV(Drink drink) {
         double totalPureAlcohol = 0.0;
         double totalVolume = 0.0;
+        double totalAlcVolume = 0.0;
+        double totalMixerVolume = 0.0;
 
         for (Ingredient ingredient : drink.getIngredients()) {
             if (ingredient.getAlcohols() != null && !ingredient.getAlcohols().isEmpty()) {
-
                 for (Alcohol alcohol : ingredient.getAlcohols()) {
                     double alcoholContent = ingredient.getMeasurement() * (alcohol.getAlcoholPercentage() / 100);
                     totalPureAlcohol += alcoholContent;
-                    totalVolume += ingredient.getMeasurement();
+                    totalAlcVolume += ingredient.getMeasurement();
                 }
 
             } else if (ingredient.getMixers() != null && !ingredient.getMixers().isEmpty()) {
-                // Mixers all have 0% alcohol
-                totalVolume += ingredient.getMeasurement();
-            }
+                for (Mixer mixer : ingredient.getMixers()){
+                    totalMixerVolume += ingredient.getMeasurement();
+                }
 
+            }
+            totalVolume = totalAlcVolume + totalMixerVolume;
         }
 
-        double totalAlcoholPercentage = (totalPureAlcohol / totalVolume) * 100;
+        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
         double alcoholUnits = (totalVolume * totalAlcoholPercentage)/1000;
         drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
         drink.setAlcoholUnits(alcoholUnits);
