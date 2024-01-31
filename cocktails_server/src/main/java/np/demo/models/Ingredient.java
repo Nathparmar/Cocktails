@@ -20,8 +20,6 @@ public class Ingredient {
 
 
 
-    @Column
-    private double measurement;
 
     @ManyToMany
     @JoinTable(
@@ -44,15 +42,13 @@ public class Ingredient {
     @JsonIgnoreProperties({"ingredients"})
     private List<Drink> drinks;
 
-    public Ingredient( double measurement) {
-        this.measurement = measurement;
+    public Ingredient() {
         this.drinks = new ArrayList<Drink>();
         this.alcohols = new ArrayList<>();
         this.mixers = new ArrayList<>();
     }
 
-    public Ingredient() {
-    }
+
 
     public Long getId() {
         return id;
@@ -63,14 +59,6 @@ public class Ingredient {
     }
 
 
-
-    public double getMeasurement() {
-        return measurement;
-    }
-
-    public void setMeasurement(double measurement) {
-        this.measurement = measurement;
-    }
 
 
     public List<Drink> getDrinks() {

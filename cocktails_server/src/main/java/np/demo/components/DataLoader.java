@@ -47,162 +47,168 @@ public class DataLoader implements ApplicationRunner {
 
         //        Alcohols
 
-        Alcohol absolutVodka = new Alcohol("Absolut Vodka", "vodka", 40);
+        Alcohol absolutVodka50 = new Alcohol("Absolut Vodka", "vodka",50, 40);
+        alcoholRepository.save(absolutVodka50);
+
+        Alcohol absolutVodka = new Alcohol("Absolut Vodka", "vodka",25, 40);
         alcoholRepository.save(absolutVodka);
 
-        Alcohol gin = new Alcohol("Edinburgh Gin", "gin", 40);
+        Alcohol absolutVodkaLongIsland = new Alcohol("Absolut Vodka", "vodka",12.5, 40);
+        alcoholRepository.save(absolutVodkaLongIsland);
+
+        Alcohol gin = new Alcohol("Edinburgh Gin", "gin",12.5, 40);
         alcoholRepository.save(gin);
 
-        Alcohol tequilaSilver = new Alcohol("Olmeca Silver Tequila", "silver tequila", 35);
+        Alcohol tequilaSilver = new Alcohol("Olmeca Silver Tequila", "silver tequila",12.5, 35);
         alcoholRepository.save(tequilaSilver);
 
-        Alcohol bacardi = new Alcohol("Bacardi", "white rum", 37.5);
+        Alcohol bacardiLongIsland = new Alcohol("Bacardi", "white rum",12.5, 37.5);
+        alcoholRepository.save(bacardiLongIsland);
+
+        Alcohol bacardi = new Alcohol("Bacardi", "white rum",50, 37.5);
         alcoholRepository.save(bacardi);
 
-        Alcohol vanillaVodka = new Alcohol("Absolut Vanilla Vodka", "vanilla vodka", 38);
+        Alcohol vanillaVodka = new Alcohol("Absolut Vanilla Vodka", "vanilla vodka",25, 38);
         alcoholRepository.save(vanillaVodka);
 
-        Alcohol passoa = new Alcohol("Passoa", " passion-fruit liquer", 17);
+        Alcohol passoa = new Alcohol("Passoa", " passion-fruit liquer",25, 17);
         alcoholRepository.save(passoa);
 
-        Alcohol kahlua = new Alcohol("Kahlua", "coffee liquer", 16);
+        Alcohol kahlua = new Alcohol("Kahlua", "coffee liquer", 25,  16);
         alcoholRepository.save(kahlua);
 
-        Alcohol chambord = new Alcohol("Chambord", " French liquer", 16.5);
+        Alcohol chambord = new Alcohol("Chambord", " French liquer", 25, 16.5);
         alcoholRepository.save(chambord);
 
-        Alcohol peachSchnapps = new Alcohol("Archers Peach Schnapps", "peach schnapps", 18);
+        Alcohol peachSchnapps = new Alcohol("Archers Peach Schnapps", "peach schnapps", 25,18);
         alcoholRepository.save(peachSchnapps);
 
-        Alcohol disaronno = new Alcohol("Disaronno", "liquer", 28);
+        Alcohol disaronno = new Alcohol("Disaronno", "liquer",50, 28);
         alcoholRepository.save(disaronno);
 
 
 
 //        Mixers
 
-        Mixer coke = new Mixer("Coca Cola");
+        Mixer coke = new Mixer("Coca Cola",150);
         mixerRepository.save(coke);
 
-        Mixer lemonade = new Mixer("Lemonade");
+        Mixer longIslandCoke = new Mixer("Coca Cola", 100);
+        mixerRepository.save(longIslandCoke);
+
+        Mixer lemonade = new Mixer("Lemonade",100);
         mixerRepository.save(lemonade);
 
-        Mixer sodaWater = new Mixer("Soda water");
+        Mixer sodaWater = new Mixer("Soda water",100);
         mixerRepository.save(sodaWater);
 
-        Mixer redBull = new Mixer("Red Bull");
+        Mixer redBull = new Mixer("Red Bull", 150);
         mixerRepository.save(redBull);
 
-        Mixer tonic = new Mixer("Tonic Water");
+        Mixer tonic = new Mixer("Tonic Water",150);
         mixerRepository.save(tonic);
 
-        Mixer dietCoke = new Mixer("Diet Coca Cola");
+        Mixer dietCoke = new Mixer("Diet Coca Cola",150);
         mixerRepository.save(dietCoke);
 
-        Mixer lemonJuice = new Mixer("Lemon Juice");
+        Mixer lemonJuice = new Mixer("Lemon Juice",25);
         mixerRepository.save(lemonJuice);
 
-        Mixer sugarSyrup = new Mixer("Sugar Syrup");
+        Mixer sugarSyrup = new Mixer("Sugar Syrup",25);
         mixerRepository.save(sugarSyrup);
 
-        Mixer passionFruitPuree = new Mixer("Passion fruit puree");
+        Mixer sugarSyrup15 = new Mixer("Sugar Syrup",15);
+        mixerRepository.save(sugarSyrup15);
+
+        Mixer passionFruitPuree = new Mixer("Passion fruit puree",25);
         mixerRepository.save(passionFruitPuree);
 
-        Mixer limeJuice = new Mixer("Lime Juice");
+        Mixer limeJuice15 = new Mixer("Lime Juice",15);
+        mixerRepository.save(limeJuice15);
+
+        Mixer limeJuice = new Mixer("Lime Juice",25);
         mixerRepository.save(limeJuice);
 
-        Mixer pineappleJuice = new Mixer("Pineapple Juice");
+        Mixer pineappleJuice = new Mixer("Pineapple Juice",25);
         mixerRepository.save(pineappleJuice);
 
-        Mixer orangeJuice = new Mixer("Orange Juice");
-        mixerRepository.save(orangeJuice);
+        Mixer pineappleJuice50 = new Mixer("Pineapple Juice", 50);
+        mixerRepository.save(pineappleJuice50);
 
-        Mixer cranberryJuice = new Mixer("Cranberry Juice");
-        mixerRepository.save(cranberryJuice);
+        Mixer orangeJuice50 = new Mixer("Orange Juice",50);
+        mixerRepository.save(orangeJuice50);
 
-        Mixer appleJuice = new Mixer("Apple Juice");
+        Mixer cranberryJuice50 = new Mixer("Cranberry Juice",50);
+        mixerRepository.save(cranberryJuice50);
+
+        Mixer appleJuice = new Mixer("Apple Juice",50);
         mixerRepository.save(appleJuice);
 
-        Mixer strawberrySyrup = new Mixer("Strawberry Syrup");
+        Mixer strawberrySyrup = new Mixer("Strawberry Syrup",25);
         mixerRepository.save(strawberrySyrup);
 
-        Mixer espressoCoffee = new Mixer("Espresso coffee");
+        Mixer espressoCoffee = new Mixer("Espresso coffee",25);
         mixerRepository.save(espressoCoffee);
-
-
-
-//     /////////////// //  Drinks /////////////////////
-
-//        Vodka Coke
-
+//
+//
+//
+////     /////////////// //  Drinks /////////////////////
+//
+////        Vodka Coke
+//
         Drink vodkaCoke = new Drink("Vodka Coke", "spirit mixer", "build in glass", "spirit glass", "Lemon slice" );
         drinkRepository.save(vodkaCoke);
-        Ingredient doubleMeasureVodkaCoke = new Ingredient(50);
+        Ingredient doubleMeasureVodkaCoke = new Ingredient();
         ingredientRepository.save(doubleMeasureVodkaCoke);
         vodkaCoke.addIngredient(doubleMeasureVodkaCoke);
-        doubleMeasureVodkaCoke.addAlcohol(absolutVodka);
-        Ingredient vodkaCokeMixerMeasure = new Ingredient(150);
-        ingredientRepository.save(vodkaCokeMixerMeasure);
-        vodkaCoke.addIngredient(vodkaCokeMixerMeasure);
-        vodkaCokeMixerMeasure.addMixer(coke);
+        doubleMeasureVodkaCoke.addAlcohol(absolutVodka50);
+        doubleMeasureVodkaCoke.addMixer(coke);
 
 //        Vodka diet Coke
 
         Drink vodkaDietCoke = new Drink("Vodka Diet Coke", "spirit mixer", "build in glass",  "spirit glass", "Lemon slice" );
         drinkRepository.save(vodkaDietCoke);
-        Ingredient doubleMeasureVodkaDietCoke = new Ingredient(50);
+        Ingredient doubleMeasureVodkaDietCoke = new Ingredient();
         ingredientRepository.save(doubleMeasureVodkaDietCoke);
         vodkaDietCoke.addIngredient(doubleMeasureVodkaDietCoke);
-        doubleMeasureVodkaDietCoke.addAlcohol(absolutVodka);
-        Ingredient vodkaDietCokeMixerMeasure = new Ingredient(150);
-        ingredientRepository.save(vodkaDietCokeMixerMeasure);
-        vodkaDietCoke.addIngredient(vodkaDietCokeMixerMeasure);
-        vodkaDietCokeMixerMeasure.addMixer(dietCoke);
+        doubleMeasureVodkaDietCoke.addAlcohol(absolutVodka50);
+        doubleMeasureVodkaDietCoke.addMixer(dietCoke);
 
-//        Long Island
+////        Long Island
 
         Drink longIsland = new Drink("Long Island Iced Tea", "cocktail", "Shake all ingredients. Pour them in a glass, then top with coca cola", "High rock glass", "Lemon wheel" );
         drinkRepository.save(longIsland);
-        Ingredient longIslandAlcMeasure = new Ingredient(12.5);
-        ingredientRepository.save(longIslandAlcMeasure);
-        longIsland.addIngredient(longIslandAlcMeasure);
-        longIslandAlcMeasure.addAlcohol(bacardi);
-        longIslandAlcMeasure.addAlcohol(absolutVodka);
-        longIslandAlcMeasure.addAlcohol(tequilaSilver);
-        longIslandAlcMeasure.addAlcohol(gin);
-        Ingredient longIslandSyrupMeasure = new Ingredient(25);
-        ingredientRepository.save(longIslandSyrupMeasure);
-        longIsland.addIngredient(longIslandSyrupMeasure);
-        longIslandSyrupMeasure.addMixer(sugarSyrup);
-        longIslandSyrupMeasure.addMixer(lemonJuice);
-        Ingredient longIslandCokeMeasure = new Ingredient(100);
-        ingredientRepository.save(longIslandCokeMeasure);
-        longIsland.addIngredient(longIslandCokeMeasure);
-        longIslandCokeMeasure.addMixer(coke);
-
-//        Passion fruit martini
-
-
+        Ingredient longIslandIngredient = new Ingredient();
+        ingredientRepository.save(longIslandIngredient);
+        longIsland.addIngredient(longIslandIngredient);
+        longIslandIngredient.addAlcohol(bacardi);
+        longIslandIngredient.addAlcohol(absolutVodkaLongIsland);
+        longIslandIngredient.addAlcohol(tequilaSilver);
+        longIslandIngredient.addAlcohol(gin);
+        longIslandIngredient.addMixer(sugarSyrup);
+        longIslandIngredient.addMixer(lemonJuice);
+        longIslandIngredient.addMixer(longIslandCoke);
+//
+////        Passion fruit martini
+//
+//
         Drink passionFruitMartini = new Drink("Passion fruit Martini", "cocktail", "shake and double strain", "Coupe glass", "cut in half passion fruit");
         drinkRepository.save(passionFruitMartini);
-        Ingredient passionFruitMeasure = new Ingredient(25);
+        Ingredient passionFruitMeasure = new Ingredient();
         ingredientRepository.save(passionFruitMeasure);
         passionFruitMartini.addIngredient(passionFruitMeasure);
         passionFruitMeasure.addAlcohol(passoa);
         passionFruitMeasure.addAlcohol(vanillaVodka);
         passionFruitMeasure.addMixer(pineappleJuice);
         passionFruitMeasure.addMixer(passionFruitPuree);
-        Ingredient passionFruitMeasure2 = new Ingredient(15);
-        ingredientRepository.save(passionFruitMeasure2);
-        passionFruitMartini.addIngredient(passionFruitMeasure2);
-        passionFruitMeasure2.addMixer(limeJuice);
-        passionFruitMeasure2.addMixer(sugarSyrup);
+        passionFruitMeasure.addMixer(limeJuice15);
+        passionFruitMeasure.addMixer(sugarSyrup15);
 
 //        Espresso Martini
 
         Drink espressoMartini = new Drink("Espresso Martini", "cocktail", "shake and double strain", "Coupe glass", "Coffee beans");
         drinkRepository.save(espressoMartini);
-        Ingredient espressoMeasure = new Ingredient(25);
+        Ingredient espressoMeasure = new Ingredient();
         ingredientRepository.save(espressoMeasure);
         espressoMartini.addIngredient(espressoMeasure);
         espressoMeasure.addAlcohol(absolutVodka);
@@ -214,65 +220,49 @@ public class DataLoader implements ApplicationRunner {
 
         Drink frenchMartini = new Drink("French Martini", "cocktail", "shake and double strain", "Coupe glass", "Lemon wheel");
         drinkRepository.save(frenchMartini);
-        Ingredient frenchMeasure1 = new Ingredient(25);
-        ingredientRepository.save(frenchMeasure1);
-        frenchMartini.addIngredient(frenchMeasure1);
-        frenchMeasure1.addAlcohol(absolutVodka);
-        frenchMeasure1.addAlcohol(chambord);
-        Ingredient frenchMeasure2 = new Ingredient(50);
-        ingredientRepository.save(frenchMeasure2);
-        frenchMartini.addIngredient(frenchMeasure2);
-        frenchMeasure2.addMixer(pineappleJuice);
-        Ingredient frenchMeasure3 = new Ingredient(10);
-        ingredientRepository.save(frenchMeasure3);
-        frenchMartini.addIngredient(frenchMeasure3);
-        frenchMeasure3.addMixer(limeJuice);
+        Ingredient frenchMeasure = new Ingredient();
+        ingredientRepository.save(frenchMeasure);
+        frenchMartini.addIngredient(frenchMeasure);
+        frenchMeasure.addAlcohol(absolutVodka);
+        frenchMeasure.addAlcohol(chambord);
+        frenchMeasure.addMixer(pineappleJuice50);
+        frenchMeasure.addMixer(limeJuice15);
 
 //        Sex on the Beach
 
         Drink sexOnTheBeach = new Drink("Sex on the Beach", "cocktail", "build in glass, orange juice followed by cranberry juice", "High rock", "Orange wheel");
         drinkRepository.save(sexOnTheBeach);
-        Ingredient sexOnTheBeachMeasure25 = new Ingredient(25);
-        ingredientRepository.save(sexOnTheBeachMeasure25);
-        sexOnTheBeach.addIngredient(sexOnTheBeachMeasure25);
-        sexOnTheBeachMeasure25.addAlcohol(absolutVodka);
-        sexOnTheBeachMeasure25.addAlcohol(peachSchnapps);
-        Ingredient sexOnTheBeach50 = new Ingredient(50);
-        ingredientRepository.save(sexOnTheBeach50);
-        sexOnTheBeach.addIngredient(sexOnTheBeach50);
-        sexOnTheBeach50.addMixer(orangeJuice);
-        sexOnTheBeach50.addMixer(cranberryJuice);
+        Ingredient sexOnTheBeachMeasure = new Ingredient();
+        ingredientRepository.save(sexOnTheBeachMeasure);
+        sexOnTheBeach.addIngredient(sexOnTheBeachMeasure);
+        sexOnTheBeachMeasure.addAlcohol(absolutVodka);
+        sexOnTheBeachMeasure.addAlcohol(peachSchnapps);
+        sexOnTheBeachMeasure.addMixer(orangeJuice50);
+        sexOnTheBeachMeasure.addMixer(cranberryJuice50);
 
 //        Disaronno Sours
 
         Drink disaronnoSours = new Drink("Disaronno Sours", "cocktail", "shake and double strain", "Short rock", "Lemon wheel");
         drinkRepository.save(disaronnoSours);
-        Ingredient disaronnoSours50 = new Ingredient(50);
-        ingredientRepository.save(disaronnoSours50);
-        disaronnoSours.addIngredient(disaronnoSours50);
-        disaronnoSours50.addAlcohol(disaronno);
-        Ingredient disaronnoSours25 = new Ingredient(25);
-        ingredientRepository.save(disaronnoSours25);
-        disaronnoSours.addIngredient(disaronnoSours25);
-        disaronnoSours25.addMixer(sugarSyrup);
-        disaronnoSours25.addMixer(pineappleJuice);
-        disaronnoSours25.addMixer(lemonJuice);
+        Ingredient disaronnoSoursIng = new Ingredient();
+        ingredientRepository.save(disaronnoSoursIng);
+        disaronnoSours.addIngredient(disaronnoSoursIng);
+        disaronnoSoursIng.addAlcohol(disaronno);
+        disaronnoSoursIng.addMixer(sugarSyrup);
+        disaronnoSoursIng.addMixer(pineappleJuice);
+        disaronnoSoursIng.addMixer(lemonJuice);
 
 //        Strawberry Daiquiri
 
         Drink strawberryDaiquiri = new Drink("Strawberry Daiquiri", "cocktail", "shake and single strain", "Coupe glass", "Strawberries");
         drinkRepository.save(strawberryDaiquiri);
-        Ingredient strawberryDaiquiri50 = new Ingredient(50);
-        ingredientRepository.save(strawberryDaiquiri50);
-        strawberryDaiquiri.addIngredient(strawberryDaiquiri50);
-        strawberryDaiquiri50.addAlcohol(bacardi);
-        Ingredient strawberryDaiquiri25 = new Ingredient(25);
-        ingredientRepository.save(strawberryDaiquiri25);
-        strawberryDaiquiri.addIngredient(strawberryDaiquiri25);
-        strawberryDaiquiri25.addMixer(sugarSyrup);
-        strawberryDaiquiri25.addMixer(strawberrySyrup);
-        strawberryDaiquiri25.addMixer(limeJuice);
-
+        Ingredient strawberryDaiquiriIng = new Ingredient();
+        ingredientRepository.save(strawberryDaiquiriIng);
+        strawberryDaiquiri.addIngredient(strawberryDaiquiriIng);
+        strawberryDaiquiriIng.addAlcohol(bacardi);
+        strawberryDaiquiriIng.addMixer(sugarSyrup);
+        strawberryDaiquiriIng.addMixer(strawberrySyrup);
+        strawberryDaiquiriIng.addMixer(limeJuice);
 
 
 

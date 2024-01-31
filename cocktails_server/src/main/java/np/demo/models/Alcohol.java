@@ -21,16 +21,20 @@ public class Alcohol {
     private String type;
 
     @Column
+    private double measurement;
+
+    @Column
     private double alcoholPercentage;
 
     @ManyToMany(mappedBy = "alcohols")
     @JsonIgnoreProperties({"alcohols"})
     private List<Ingredient> ingredients;
 
-    public Alcohol( String name, String type, double alcoholPercentage) {
+    public Alcohol( String name, String type, double measurement, double alcoholPercentage) {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.measurement = measurement;
         this.alcoholPercentage = alcoholPercentage;
     }
 
@@ -59,6 +63,14 @@ public class Alcohol {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public double getMeasurement() {
+        return measurement;
+    }
+
+    public void setMeasurement(double measurement) {
+        this.measurement = measurement;
     }
 
 

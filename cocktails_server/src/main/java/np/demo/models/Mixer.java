@@ -18,15 +18,19 @@ public class Mixer {
     private String name;
 
     @Column
+    private double measurement;
+
+    @Column
     private double alcoholPercentage;
 
     @ManyToMany(mappedBy = "mixers")
     @JsonIgnoreProperties({"mixers"})
     private List<Ingredient> ingredients;
 
-    public Mixer(String name) {
+    public Mixer(String name, double measurement) {
         this.id = id;
         this.name = name;
+        this.measurement = measurement;
         this.alcoholPercentage = 0;
     }
 
@@ -48,6 +52,15 @@ public class Mixer {
     public void setName(String name) {
         this.name = name;
     }
+
+    public double getMeasurement() {
+        return measurement;
+    }
+
+    public void setMeasurement(double measurement) {
+        this.measurement = measurement;
+    }
+
 
     public double getAlcoholPercentage() {
         return alcoholPercentage;

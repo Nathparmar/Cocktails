@@ -59,49 +59,33 @@ public class DrinkService {
     }
 
 
-//    public void calculateTotalAlcoholPercentage(Drink drink){
-//        double totalPureAlcohol = 0.0; //in ml
-//        double totalVolume = 0.0; //
-//
-//
-//        for(Ingredient ingredient : drink.getIngredients()){
-//            double alcoholContent = ingredient.getMeasurement() * (ingredient.getAlcoholPercentage()/100);
-//            totalPureAlcohol += alcoholContent;
-//            totalVolume += ingredient.getMeasurement();
-//        }
-//
-//        double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
-//        drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
-//    }
-
     public void calculateABV(Drink drink) {
         double totalPureAlcohol = 0.0;
-        double totalVolume = 0.0;
         double totalAlcVolume = 0.0;
         double totalMixerVolume = 0.0;
 
         for (Ingredient ingredient : drink.getIngredients()) {
-            if (ingredient.getAlcohols() != null && !ingredient.getAlcohols().isEmpty()) {
+
                 for (Alcohol alcohol : ingredient.getAlcohols()) {
-                    double alcoholContent = ingredient.getMeasurement() * (alcohol.getAlcoholPercentage() / 100);
+                    double alcoholContent = alcohol.getMeasurement() * (alcohol.getAlcoholPercentage() / 100);
                     totalPureAlcohol += alcoholContent;
-                    totalAlcVolume += ingredient.getMeasurement();
+                    totalAlcVolume += alcohol.getMeasurement();
                 }
 
-            } else if (ingredient.getMixers() != null && !ingredient.getMixers().isEmpty()) {
-                for (Mixer mixer : ingredient.getMixers()){
-                    totalMixerVolume += ingredient.getMeasurement();
+                for (Mixer mixer : ingredient.getMixers()) {
+                    totalMixerVolume += mixer.getMeasurement();
                 }
-
-            }
-            totalVolume = totalAlcVolume + totalMixerVolume;
         }
+
+        double totalVolume = totalAlcVolume + totalMixerVolume;
 
         double totalAlcoholPercentage = (totalPureAlcohol/totalVolume)*100;
         double alcoholUnits = (totalVolume * totalAlcoholPercentage)/1000;
         drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
         drink.setAlcoholUnits(alcoholUnits);
     }
+
+
 
 
 
