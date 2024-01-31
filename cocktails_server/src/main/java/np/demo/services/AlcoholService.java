@@ -14,7 +14,7 @@ public class AlcoholService {
     AlcoholRepository alcoholRepository;
 
     public List<Alcohol> findAllAlcohols(){
-        return alcoholRepository.findAll();
+        return alcoholRepository.findAllByMeasurement(25);
     }
 
     public Alcohol findAlcoholById(Long id) {
