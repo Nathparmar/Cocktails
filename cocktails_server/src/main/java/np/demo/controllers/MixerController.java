@@ -25,7 +25,13 @@ public class MixerController {
         return new ResponseEntity<>(mixerService.findAllMixers(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/unique")
+    public ResponseEntity<List<Mixer>> getAllUniqueMixers(){
+        return new ResponseEntity<>(mixerService.findAllUniqueMixers(), HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/{id}")
     public ResponseEntity<Mixer> getMixerById(@PathVariable Long id){
         return new ResponseEntity<>(mixerService.findMixerById(id), HttpStatus.OK);
     }

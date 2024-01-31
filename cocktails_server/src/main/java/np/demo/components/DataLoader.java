@@ -47,25 +47,17 @@ public class DataLoader implements ApplicationRunner {
 
         //        Alcohols
 
-        Alcohol absolutVodka50 = new Alcohol("Absolut Vodka", "vodka",50, 40);
-        alcoholRepository.save(absolutVodka50);
 
         Alcohol absolutVodka = new Alcohol("Absolut Vodka", "vodka",25, 40);
         alcoholRepository.save(absolutVodka);
 
-        Alcohol absolutVodkaLongIsland = new Alcohol("Absolut Vodka", "vodka",12.5, 40);
-        alcoholRepository.save(absolutVodkaLongIsland);
-
-        Alcohol gin = new Alcohol("Edinburgh Gin", "gin",12.5, 40);
+        Alcohol gin = new Alcohol("Edinburgh Gin", "gin",25, 40);
         alcoholRepository.save(gin);
 
-        Alcohol tequilaSilver = new Alcohol("Olmeca Silver Tequila", "silver tequila",12.5, 35);
+        Alcohol tequilaSilver = new Alcohol("Olmeca Silver Tequila", "silver tequila",25, 35);
         alcoholRepository.save(tequilaSilver);
 
-        Alcohol bacardiLongIsland = new Alcohol("Bacardi", "white rum",12.5, 37.5);
-        alcoholRepository.save(bacardiLongIsland);
-
-        Alcohol bacardi = new Alcohol("Bacardi", "white rum",50, 37.5);
+        Alcohol bacardi = new Alcohol("Bacardi", "white rum",25, 37.5);
         alcoholRepository.save(bacardi);
 
         Alcohol vanillaVodka = new Alcohol("Absolut Vanilla Vodka", "vanilla vodka",25, 38);
@@ -83,8 +75,29 @@ public class DataLoader implements ApplicationRunner {
         Alcohol peachSchnapps = new Alcohol("Archers Peach Schnapps", "peach schnapps", 25,18);
         alcoholRepository.save(peachSchnapps);
 
-        Alcohol disaronno = new Alcohol("Disaronno", "liquer",50, 28);
+        Alcohol disaronno = new Alcohol("Disaronno", "liquer",25, 28);
         alcoholRepository.save(disaronno);
+
+        Alcohol absolutVodka50 = new Alcohol("Absolut Vodka", "vodka",50, 40);
+        alcoholRepository.save(absolutVodka50);
+
+        Alcohol ginLongIsland = new Alcohol("Edinburgh Gin", "gin",12.5, 40);
+        alcoholRepository.save(ginLongIsland);
+
+        Alcohol tequilaSilverLongIsland = new Alcohol("Olmeca Silver Tequila", "silver tequila",12.5, 35);
+        alcoholRepository.save(tequilaSilverLongIsland);
+
+        Alcohol bacardiLongIsland = new Alcohol("Bacardi", "white rum",12.5, 37.5);
+        alcoholRepository.save(bacardiLongIsland);
+
+        Alcohol disaronno50 = new Alcohol("Disaronno", "liquer",50, 28);
+        alcoholRepository.save(disaronno50);
+
+        Alcohol bacardi50 = new Alcohol("Bacardi", "white rum",25, 37.5);
+        alcoholRepository.save(bacardi50);
+
+        Alcohol absolutVodkaLongIsland = new Alcohol("Absolut Vodka", "vodka",12.5, 40);
+        alcoholRepository.save(absolutVodkaLongIsland);
 
 
 
@@ -181,10 +194,10 @@ public class DataLoader implements ApplicationRunner {
         Ingredient longIslandIngredient = new Ingredient();
         ingredientRepository.save(longIslandIngredient);
         longIsland.addIngredient(longIslandIngredient);
-        longIslandIngredient.addAlcohol(bacardi);
+        longIslandIngredient.addAlcohol(bacardiLongIsland);
         longIslandIngredient.addAlcohol(absolutVodkaLongIsland);
-        longIslandIngredient.addAlcohol(tequilaSilver);
-        longIslandIngredient.addAlcohol(gin);
+        longIslandIngredient.addAlcohol(tequilaSilverLongIsland);
+        longIslandIngredient.addAlcohol(ginLongIsland);
         longIslandIngredient.addMixer(sugarSyrup);
         longIslandIngredient.addMixer(lemonJuice);
         longIslandIngredient.addMixer(longIslandCoke);
@@ -247,7 +260,7 @@ public class DataLoader implements ApplicationRunner {
         Ingredient disaronnoSoursIng = new Ingredient();
         ingredientRepository.save(disaronnoSoursIng);
         disaronnoSours.addIngredient(disaronnoSoursIng);
-        disaronnoSoursIng.addAlcohol(disaronno);
+        disaronnoSoursIng.addAlcohol(disaronno50);
         disaronnoSoursIng.addMixer(sugarSyrup);
         disaronnoSoursIng.addMixer(pineappleJuice);
         disaronnoSoursIng.addMixer(lemonJuice);
@@ -259,7 +272,7 @@ public class DataLoader implements ApplicationRunner {
         Ingredient strawberryDaiquiriIng = new Ingredient();
         ingredientRepository.save(strawberryDaiquiriIng);
         strawberryDaiquiri.addIngredient(strawberryDaiquiriIng);
-        strawberryDaiquiriIng.addAlcohol(bacardi);
+        strawberryDaiquiriIng.addAlcohol(bacardi50);
         strawberryDaiquiriIng.addMixer(sugarSyrup);
         strawberryDaiquiriIng.addMixer(strawberrySyrup);
         strawberryDaiquiriIng.addMixer(limeJuice);
