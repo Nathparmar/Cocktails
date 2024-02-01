@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "measurements")
+@Table(name = "ingredients")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Ingredient {
 
