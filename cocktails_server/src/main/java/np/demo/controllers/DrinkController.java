@@ -34,13 +34,13 @@ public class DrinkController {
         return new ResponseEntity<>(drinkService.findDrinkById(id), HttpStatus.OK);
     }
 
-//    @PostMapping
-//    public ResponseEntity<Drink> calculateAlcPercentageOfClientDrink(@RequestBody List<Ingredient> ingredients){
-//        DrinkDTO drinkDTO = new DrinkDTO();
-//        drinkService.calculateTotalAlcoholPercentageDTO(drinkDTO, ingredients);
-//        Drink drink = new Drink(drinkDTO.getName(), drinkDTO.getTotalAlcoholPercentage());
-//        return ResponseEntity.ok(drink);
-//    }
+//    POST
+    @PostMapping
+    public ResponseEntity<DrinkDTO> calculateAlcPercentageOfClientDrink(@RequestBody DrinkDTO drinkDTO){
+        drinkService.postABVCalculator(drinkDTO);
+        return new ResponseEntity<>(drinkDTO,HttpStatus.OK);
+
+    }
 
 
 

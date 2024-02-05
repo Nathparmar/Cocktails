@@ -1,6 +1,8 @@
 package np.demo.services;
 
 
+import np.demo.DTOs.DrinkDTO;
+import np.demo.DTOs.IngredientDTO;
 import np.demo.models.Alcohol;
 import np.demo.models.Drink;
 import np.demo.models.Ingredient;
@@ -83,6 +85,26 @@ public class DrinkService {
         double alcoholUnits = (totalVolume * totalAlcoholPercentage)/1000;
         drink.setTotalAlcoholPercentage(totalAlcoholPercentage);
         drink.setAlcoholUnits(alcoholUnits);
+    }
+
+
+    public void postABVCalculator(DrinkDTO drinkDTO){
+
+        double totalPureAlcohol = 0;
+        double totalVolume = 0;
+
+        for (IngredientDTO ingredientsDTO: drinkDTO.getIngredientDTOs()) {
+
+            double alcoholContent = ingredientsDTO.getMeasurement() * (ingredientsDTO.getAlcoholPercentage()/100);
+            totalPureAlcohol += alcoholContent;
+            totalVolume += ingredientsDTO.getMeasurement();
+
+        }
+
+        double totalABV = (totalPureAlcohol/totalVolume)*100;
+        double alcoholUnits = (totalVolume * totalABV)/1000;
+        drinkDTO.setTotalAlcoholPercentage(totalABV);
+        drinkDTO.setAlcoholUnits(alcoholUnits);
     }
 
 

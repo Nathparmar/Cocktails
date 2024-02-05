@@ -7,35 +7,37 @@ import java.util.List;
 
 public class DrinkDTO {
 
-    private String name;
 
-    private List<Ingredient> ingredients;
+    private List<IngredientDTO> ingredientDTOs;
 
     private double totalAlcoholPercentage;
 
-    public DrinkDTO(String name, List<Ingredient> ingredients) {
-        this.name = name;
-        this.ingredients = new ArrayList<Ingredient>();
+
+    private double alcoholUnits;
+
+    public DrinkDTO(List<IngredientDTO> ingredientsDTOs) {
+        this.ingredientDTOs = new ArrayList<IngredientDTO>();
         this.totalAlcoholPercentage = 0.0;
+        this.alcoholUnits = 0.0;
     }
 
     public DrinkDTO() {
     }
 
-    public String getName() {
-        return name;
+    public List<IngredientDTO> getIngredientDTOs() {
+        return ingredientDTOs;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIngredientDTOs(List<IngredientDTO> ingredientDTOs) {
+        this.ingredientDTOs = ingredientDTOs;
     }
 
-    public List<Ingredient> getIngredients() {
-        return ingredients;
+    public double getAlcoholUnits() {
+        return alcoholUnits;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
-        this.ingredients = ingredients;
+    public void setAlcoholUnits(double alcoholUnits) {
+        this.alcoholUnits = alcoholUnits;
     }
 
     public double getTotalAlcoholPercentage() {
