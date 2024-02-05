@@ -16,6 +16,10 @@ public class IngredientDTO {
         this.alcoholPercentage = alcoholPercentage;
     }
 
+    public IngredientDTO(){
+        
+    }
+
     public String getName() {
         return name;
     }
