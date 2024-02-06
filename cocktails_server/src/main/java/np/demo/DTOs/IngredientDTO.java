@@ -17,7 +17,7 @@ public class IngredientDTO {
     }
 
     public IngredientDTO(){
-        
+
     }
 
     public String getName() {

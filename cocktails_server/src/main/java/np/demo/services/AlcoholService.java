@@ -20,4 +20,5 @@ public class AlcoholService {
     public Alcohol findAlcoholById(Long id) {
         return alcoholRepository.findById(id).get();
     }
+
 }
