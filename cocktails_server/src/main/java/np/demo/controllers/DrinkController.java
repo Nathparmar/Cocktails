@@ -34,6 +34,11 @@ public class DrinkController {
         return new ResponseEntity<>(drinkService.findDrinkById(id), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/random")
+    public ResponseEntity<Drink> getRandomDrink(){
+        return new ResponseEntity<>(drinkService.getRandomDrink(), HttpStatus.OK);
+    }
+
 //    POST
     @PostMapping
     public ResponseEntity<DrinkDTO> calculateAlcPercentageOfClientDrink(@RequestBody DrinkDTO drinkDTO){

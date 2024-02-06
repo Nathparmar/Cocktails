@@ -11,6 +11,7 @@ import np.demo.repositories.DrinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -105,6 +106,16 @@ public class DrinkService {
         double alcoholUnits = (totalVolume * totalABV)/1000;
         drinkDTO.setTotalAlcoholPercentage(totalABV);
         drinkDTO.setAlcoholUnits(alcoholUnits);
+    }
+
+    public Drink getRandomDrink(){
+        List<Drink> drinks = drinkRepository.findAll();
+
+        Collections.shuffle(drinks); // Shuffle for true randomness
+
+        int drinkIndex = 0; // gets the first alcohol of the shuffled list
+        return drinks.subList(0, drinks.size()).get(drinkIndex);
+
     }
 
 

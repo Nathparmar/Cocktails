@@ -31,5 +31,11 @@ public class AlcoholController {
         return new ResponseEntity<>(alcoholService.findAlcoholById(id), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/random")
+    public ResponseEntity<Alcohol> getRandomAlcohol(){
+        return new ResponseEntity<>(alcoholService.getRandomAlcohol(),HttpStatus.OK);
+    }
+
+
 
 }
